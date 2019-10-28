@@ -69,8 +69,22 @@ public class Lab11 {
 	}
 	
 	static MovieGenre getGenreFromUser() {
+		String response = "";
+		String responseMap[] = {"horror", "sci-fi", "drama", "animated"};
 		while (true) {
-			switch (Validator.getString(scn, "What genre are you interested in?\nOptions: Horror, Sci-fi, Drama, Animated").toLowerCase()) {
+			response = Validator.getString(scn, "What genre are you interested in?\nOptions:\n1: Horror\n2: Sci-fi\n3: Drama\n4: Animated").toLowerCase();
+			System.out.println("");
+			try {
+				response = responseMap[Integer.valueOf(response)];
+			}
+			catch (IndexOutOfBoundsException e) {
+				response = "ya done fucked up.";
+			}
+			catch (Exception e) {
+				
+			}
+			
+			switch (response) {
 			case "horror":
 				return MovieGenre.HORROR;
 			case "sci-fi":
