@@ -33,8 +33,8 @@ public class Lab11 {
 		Collections.sort(movieList, new Comparator<Movie>() {
 		    @Override
 		    public int compare(Movie m1, Movie m2) {
-		    	String t1 = stripThe(m1.getTitle());
-		    	String t2 = stripThe(m2.getTitle());
+		    	String t1 = prepTitle(m1.getTitle());
+		    	String t2 = prepTitle(m2.getTitle());
 		    	
 		        return t1.compareTo(t2);
 		    }
@@ -86,13 +86,13 @@ public class Lab11 {
 		}
 	}
 	
-	static String stripThe(String title) {
+	static String prepTitle(String title) {
 		int firstSpace = title.indexOf(" ");
 		if ((firstSpace != -1) && (title.substring(0, firstSpace).toLowerCase().equals("the"))) {
-			return (title.substring(firstSpace));
+			return (title.substring(firstSpace + 1).toLowerCase());
 		}
 		else {
-			return title;
+			return title.toLowerCase();
 		}
 	}
 }
